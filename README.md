@@ -56,30 +56,62 @@ This project has been built as part of my AI August App-A-Day Challenge. You can
 
 ## 🔧 Configuration
 
-[TBD]
+### Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```bash
+# OpenAI API (for AI features)
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Optional: External API URLs
+USER_API_URL=https://jsonplaceholder.typicode.com/users
+PRODUCT_API_URL=https://dummyjson.com/products
+
+# Optional: Proxy Settings
+ENABLE_CACHE=true
+CACHE_DURATION=300000
+```
+
+### Key Configuration Files
+
+- **`next.config.mjs`** - Next.js configuration with bundle analyzer
+- **`tsconfig.json`** - TypeScript configuration with path aliases (`@/*`)
+- **`theme.ts`** - Mantine theme customization
+- **`eslint.config.mjs`** - ESLint rules with Mantine and TypeScript support
+- **`jest.config.cjs`** - Jest testing configuration
+- **`.nvmrc`** - Node.js version (v24.3.0)
+
+### Path Aliases
+
+The project uses TypeScript path aliases for cleaner imports:
+
+```typescript
+import { Component } from '@/components/Component';  // instead of '../../../components/Component'
+```
 
 
 ## 📦 Available Scripts
 ### Build and dev scripts
 
-- `dev` – start dev server
-- `build` – bundle application for production
-- `analyze` – analyzes application bundle with [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+- `npm run dev` – start dev server
+- `npm run build` – bundle application for production
+- `npm run analyze` – analyzes application bundle with [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 
 ### Testing scripts
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `jest` – runs jest tests
-- `jest:watch` – starts jest watch
-- `test` – runs `jest`, `prettier:check`, `lint` and `typecheck` scripts
+- `npm run typecheck` – checks TypeScript types
+- `npm run lint` – runs ESLint
+- `npm run prettier:check` – checks files with Prettier
+- `npm run jest` – runs jest tests
+- `npm run jest:watch` – starts jest watch
+- `npm test` – runs `jest`, `prettier:check`, `lint` and `typecheck` scripts
 
 ### Other scripts
 
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
+- `npm run storybook` – starts storybook dev server
+- `npm run storybook:build` – build production storybook bundle to `storybook-static`
+- `npm run prettier:write` – formats all files with Prettier
 
 
 ## 📜 License

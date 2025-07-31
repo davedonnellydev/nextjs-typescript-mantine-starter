@@ -1,16 +1,12 @@
-import { ApiResponse, RequestConfig, ApiError } from './types';
 import OpenAI from 'openai';
+import { RequestConfig } from './types';
 
 export class ApiClient {
   private baseUrl: string;
   private defaultHeaders: Record<string, string>;
   private defaultTimeout: number;
 
-  constructor(
-    baseUrl: string,
-    headers?: Record<string, string>,
-    timeout: number = 10000
-  ) {
+  constructor(baseUrl: string, headers?: Record<string, string>, timeout: number = 10000) {
     this.baseUrl = baseUrl;
     this.defaultHeaders = {
       'Content-Type': 'application/json',
@@ -42,9 +38,7 @@ export class ApiClient {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.message || `HTTP ${response.status}: ${response.statusText}`
-        );
+        throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
       }
 
       return await response.json();
@@ -88,15 +82,13 @@ export class ApiClient {
 }
 
 export const OpenAIResponsesAPI = (input: string) => {
-    const client = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY
-    })
+  const client = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
 
-    const response = client.responses.create({
-        model: "gpt-4.1",
-        input: input
-        });
-
-    console.log(response)
-    return response;
+  const response = client.responses.create({
+    model: 'gpt-4.1',
+    input,
+  });
+  return response;
 };

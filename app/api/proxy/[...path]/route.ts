@@ -3,13 +3,12 @@ import { ProxyConfig } from '../../../lib/api/types';
 
 // Proxy configurations for different API endpoints
 const PROXY_CONFIGS: Record<string, ProxyConfig> = {
-
   // Example external APIs (ready for future use)
-  'users': {
+  users: {
     target: process.env.USER_API_URL || 'https://jsonplaceholder.typicode.com/users',
     timeout: 10000,
   },
-  'products': {
+  products: {
     target: process.env.PRODUCT_API_URL || 'https://dummyjson.com/products',
     timeout: 10000,
   },
@@ -27,10 +26,7 @@ async function handleProxyRequest(
   const config = PROXY_CONFIGS[path];
 
   if (!config) {
-    return NextResponse.json(
-      { error: `API endpoint '${path}' not configured` },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: `API endpoint '${path}' not configured` }, { status: 404 });
   }
 
   try {
@@ -42,16 +38,13 @@ async function handleProxyRequest(
     const headers = new Headers();
 
     // Copy relevant headers from the original request
-    const allowedHeaders = [
-      'content-type',
-      'accept',
-      'user-agent',
-      'cache-control',
-    ];
+    const allowedHeaders = ['content-type', 'accept', 'user-agent', 'cache-control'];
 
-    allowedHeaders.forEach(header => {
+    allowedHeaders.forEach((header) => {
       const value = request.headers.get(header);
-      if (value) headers.set(header, value);
+      if (value) {
+        headers.set(header, value);
+      }
     });
 
     // Add proxy-specific headers
@@ -69,7 +62,7 @@ async function handleProxyRequest(
     if (method === 'GET' && process.env.ENABLE_CACHE === 'true') {
       const cacheKey = `${path}:${url.search}`;
       const cached = responseCache.get(cacheKey);
-      const cacheTTL = parseInt(process.env.CACHE_DURATION || '300000'); // 5 minutes default
+      const cacheTTL = parseInt(process.env.CACHE_DURATION || '300000', 10); // 5 minutes default
 
       if (cached && Date.now() - cached.timestamp < cacheTTL) {
         return NextResponse.json(cached.data, {
@@ -112,7 +105,7 @@ async function handleProxyRequest(
       responseCache.set(cacheKey, {
         data,
         timestamp: Date.now(),
-        ttl: parseInt(process.env.CACHE_DURATION || '300000'),
+        ttl: parseInt(process.env.CACHE_DURATION || '300000', 10),
       });
     }
 
@@ -130,56 +123,34 @@ async function handleProxyRequest(
       status: response.status,
       headers: responseHeaders,
     });
-
   } catch (error) {
     console.error('Proxy error:', error);
 
     if (error instanceof Error && error.name === 'AbortError') {
-      return NextResponse.json(
-        { error: 'Request timeout' },
-        { status: 408 }
-      );
+      return NextResponse.json({ error: 'Request timeout' }, { status: 408 });
     }
 
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
 // Handle all HTTP methods
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { path: string[] } }
-) {
+export async function GET(request: NextRequest, { params }: { params: { path: string[] } }) {
   return handleProxyRequest(request, params.path, 'GET');
 }
 
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { path: string[] } }
-) {
+export async function POST(request: NextRequest, { params }: { params: { path: string[] } }) {
   return handleProxyRequest(request, params.path, 'POST');
 }
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { path: string[] } }
-) {
+export async function PUT(request: NextRequest, { params }: { params: { path: string[] } }) {
   return handleProxyRequest(request, params.path, 'PUT');
 }
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { path: string[] } }
-) {
+export async function DELETE(request: NextRequest, { params }: { params: { path: string[] } }) {
   return handleProxyRequest(request, params.path, 'DELETE');
 }
 
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { path: string[] } }
-) {
+export async function PATCH(request: NextRequest, { params }: { params: { path: string[] } }) {
   return handleProxyRequest(request, params.path, 'PATCH');
 }

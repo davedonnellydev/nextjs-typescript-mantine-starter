@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { apiCache, generateCacheKey, retryRequest } from '../lib/utils/api-helpers';
 
-interface UseApiOptions<T> {
+interface UseApiOptions {
   endpoint: string;
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   body?: any;
@@ -33,14 +33,16 @@ export function useApi<T>({
   cacheTTL = 300000, // 5 minutes
   retries = 3,
   retryDelay = 1000,
-}: UseApiOptions<T>): UseApiResult<T> {
+}: UseApiOptions): UseApiResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const fetchData = useCallback(async () => {
-    if (!enabled) return;
+    if (!enabled) {
+      return;
+    }
 
     // Cancel previous request if still pending
     if (abortControllerRef.current) {
@@ -88,7 +90,6 @@ export function useApi<T>({
         const cacheKey = generateCacheKey(endpoint, body);
         apiCache.set(cacheKey, result, cacheTTL);
       }
-      console.log(result);
 
       setData(result);
     } catch (err) {
@@ -104,15 +105,18 @@ export function useApi<T>({
     }
   }, [endpoint, method, body, headers, enabled, cache, cacheTTL, retries, retryDelay]);
 
-  const mutate = useCallback((newData: T) => {
-    setData(newData);
+  const mutate = useCallback(
+    (newData: T) => {
+      setData(newData);
 
-    // Update cache if enabled
-    if (cache && method === 'GET') {
-      const cacheKey = generateCacheKey(endpoint, body);
-      apiCache.set(cacheKey, newData, cacheTTL);
-    }
-  }, [endpoint, method, body, cache, cacheTTL]);
+      // Update cache if enabled
+      if (cache && method === 'GET') {
+        const cacheKey = generateCacheKey(endpoint, body);
+        apiCache.set(cacheKey, newData, cacheTTL);
+      }
+    },
+    [endpoint, method, body, cache, cacheTTL]
+  );
 
   useEffect(() => {
     fetchData();
