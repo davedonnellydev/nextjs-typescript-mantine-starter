@@ -56,7 +56,7 @@ export async function retryRequest<T>(
       }
 
       // Exponential backoff
-      const waitTime = delay * (2 ** (attempt - 1));
+      const waitTime = delay * 2 ** (attempt - 1);
       await new Promise((resolve) => setTimeout(resolve, waitTime));
     }
   }
