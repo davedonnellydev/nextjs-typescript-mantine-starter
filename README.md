@@ -26,7 +26,7 @@ This project has been built as part of my AI August App-A-Day Challenge. You can
 
 ## 🧪 Testing
 
-![CI](https://github.com/davedonnellydev/nextjs-typescript-mantine-starter/actions/workflows/ci.yml/badge.svg) *[Link should be amended so that correct repo is specified]*  
+![CI](https://github.com/davedonnellydev/nextjs-typescript-mantine-starter/actions/workflows/npm_test.yml/badge.svg) *[Link should be amended so that correct repo is specified]*  
 *Note: Test suite runs automatically with each push/merge.*  
 
 ## Quick Start
