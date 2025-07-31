@@ -9,8 +9,6 @@
 **▶️ Live Demo**: *[https://your-demo-url.com](https://your-demo-url.com)*  
 *(Link will be added after deployment)*  
 
-**🏁 Starter repo**: [Next.js TypeScript Mantine starter](https://github.com/davedonnellydev/nextjs-typescript-mantine-starter)  
-
 ## 🗒️ Summary
 **Lessons learned**  
 *A little summary of learnings*  
@@ -117,8 +115,3 @@ import { Component } from '@/components/Component';  // instead of '../../../com
 ## 📜 License
 ![GitHub License](https://img.shields.io/github/license/davedonnellydev/nextjs-typescript-mantine-starter)  
 This project is licensed under the MIT License.  
-
-
-## Mantine Next.js template
-
-This is a template based off the [Mantine Next.js template](https://github.com/mantinedev/next-app-template).  
