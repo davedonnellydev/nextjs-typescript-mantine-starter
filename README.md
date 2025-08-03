@@ -2,7 +2,7 @@
 
 ![Last Commit](https://img.shields.io/github/last-commit/davedonnellydev/nextjs-typescript-mantine-starter)  
 
-**📆 Date**: *[Project build date here]*  
+**📆 Date**: XX/Aug/2025  
 **🎯 Project Objective**: *[Write up any project objectives here]*   
 **🚀 Features**: *[Main features for MVP]*  
 **🛠️ Tech used**: *[Main tech used, including links to libraries/APIs]*  
