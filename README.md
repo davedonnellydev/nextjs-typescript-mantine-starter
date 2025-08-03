@@ -1,6 +1,6 @@
 # Project [00] #AIAugustAppADay: [Project name]
 
-![Last Commit](https://img.shields.io/github/last-commit/davedonnellydev/nextjs-typescript-mantine-starter)  
+![Last Commit](https://img.shields.io/github/last-commit/davedonnellydev/ai-august-2025-XX)  
 
 **📆 Date**: XX/Aug/2025  
 **🎯 Project Objective**: *[Write up any project objectives here]*   
@@ -24,15 +24,15 @@ This project has been built as part of my AI August App-A-Day Challenge. You can
 
 ## 🧪 Testing
 
-![CI](https://github.com/davedonnellydev/nextjs-typescript-mantine-starter/actions/workflows/npm_test.yml/badge.svg) *[Link should be amended so that correct repo is specified]*  
+![CI](https://github.com/davedonnellydev/ai-august-2025-XX/actions/workflows/npm_test.yml/badge.svg)   
 *Note: Test suite runs automatically with each push/merge.*  
 
 ## Quick Start
 
 1. **Clone and install:**
    ```bash
-   git clone https://github.com/davedonnellydev/nextjs-typescript-mantine-starter.git
-   cd nextjs-typescript-mantine-starter
+   git clone https://github.com/davedonnellydev/ai-august-2025-XX.git
+   cd ai-august-2025-XX
    npm install
    ```
 
@@ -113,5 +113,5 @@ import { Component } from '@/components/Component';  // instead of '../../../com
 
 
 ## 📜 License
-![GitHub License](https://img.shields.io/github/license/davedonnellydev/nextjs-typescript-mantine-starter)  
+![GitHub License](https://img.shields.io/github/license/davedonnellydev/ai-august-2025-XX)  
 This project is licensed under the MIT License.  
