@@ -111,9 +111,4 @@ import { Component } from '@/components/Component'; // instead of '../../../comp
 
 ## 📜 License
 ![GitHub License](https://img.shields.io/github/license/davedonnellydev/ai-august-2025-XX)  
-This project is licensed under the MIT License.
-
-
-## Mantine Next.js template
-
-This is a template based off the [Mantine Next.js template](https://github.com/mantinedev/next-app-template).
+This project is licensed under the MIT License.  
