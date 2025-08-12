@@ -1,6 +1,6 @@
 # Project [00] #AIAugustAppADay: [Project name]
 
-![Last Commit](https://img.shields.io/github/last-commit/davedonnellydev/ai-august-2025-XX)
+![Last Commit](https://img.shields.io/github/last-commit/davedonnellydev/ai-august-2025-XX)  
 
 **📆 Date**: XX/Aug/2025  
 **🎯 Project Objective**: *[Write up any project objectives here]*  
