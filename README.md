@@ -62,13 +62,6 @@ Create a `.env.local` file in the root directory:
 # OpenAI API (for AI features)
 OPENAI_API_KEY=your_openai_api_key_here
 
-# Optional: External API URLs
-USER_API_URL=https://jsonplaceholder.typicode.com/users
-PRODUCT_API_URL=https://dummyjson.com/products
-
-# Optional: Proxy Settings
-ENABLE_CACHE=true
-CACHE_DURATION=300000
 ```
 
 ### Key Configuration Files
@@ -97,15 +90,13 @@ import { Component } from '@/components/Component'; // instead of '../../../comp
 
 - `npm run typecheck` – checks TypeScript types
 - `npm run lint` – runs ESLint
-- `npm run prettier:check` – checks files with Prettier
 - `npm run jest` – runs jest tests
 - `npm run jest:watch` – starts jest watch
 - `npm test` – runs `prettier:check`, `lint`, `typecheck` and `jest`
 
 ### Other scripts
 
-- `npm run storybook` – starts Storybook
-- `npm run storybook:build` – builds Storybook to `storybook-static`
+- `npm run prettier:check` – checks files with Prettier
 - `npm run prettier:write` – formats files with Prettier
 
 
